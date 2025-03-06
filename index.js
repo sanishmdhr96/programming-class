@@ -6,11 +6,9 @@
 //     return a - b
 // }
 
-
 // function multiply(a, b) {
 //     return a * b
 // }
-
 
 // function divide(a, b) {
 //     return a / b
@@ -44,15 +42,11 @@
 
 // }
 
-
-
-
 // const result1 = calculate('divide', 3, 1)
 // console.log('result1', result1)
 
 // let a = '999';
 // let b = "22";
-
 
 // console.log('type a', typeof parseInt(a))
 // console.log("type b", typeof parseInt(b))
@@ -61,8 +55,7 @@
 
 // console.log(parseFloat(result).toFixed(2))
 
-
-const listContainer = document.getElementById('list-container');
+const listContainer = document.getElementById("list-container");
 
 // listContainer.innerHTML = `<ol>
 //     <li>apple</li>
@@ -70,16 +63,79 @@ const listContainer = document.getElementById('list-container');
 //     <li>orange</li>
 // </ol>`
 
-const array = ['apple', 'banana', 'orange', 'gwava', 'grapes', 'mango', 'kwiwi', 'pineapple']
-const orderedList = document.createElement('ol');
+// const array = ['apple', 'banana', 'orange', 'gwava', 'grapes', 'mango', 'kwiwi', 'pineapple']
+// const orderedList = document.createElement('ol');
 
-for (let i = 0; i < array.length; i++) {
-    if (array[i] !== 'apple' && array[i] !== 'orange') {
-        const listItem = document.createElement('li')
-        listItem.innerText = array[i]
-        orderedList.appendChild(listItem)
-    }
+// for (let i = 0; i < array.length; i++) {
+//     if (array[i] !== 'apple' && array[i] !== 'orange') {
+//         const listItem = document.createElement('li')
+//         listItem.innerText = array[i]
+//         orderedList.appendChild(listItem)
+//     }
+// }
+
+// listContainer.appendChild(orderedList)
+
+const students = [
+    {
+        rollNumber: "70",
+        studentName: "Sanish",
+        classNumber: "9",
+        subject: "Maths",
+        remarks: "Pass",
+    },
+    {
+        rollNumber: "80",
+        studentName: "Manish",
+        classNumber: "9",
+        subject: "Maths",
+        remarks: "Pass",
+    },
+    {
+        rollNumber: "20",
+        studentName: "Anish",
+        classNumber: "9",
+        subject: "Maths",
+        remarks: "Pass",
+    },
+    {
+        rollNumber: "30",
+        studentName: "Ram",
+        classNumber: "10",
+        subject: "Science",
+        remarks: "Pass",
+    },
+];
+
+const tableBody = document.getElementById("table-body");
+console.log(tableBody);
+
+
+for (let i = 0; i < students.length; i++) {
+    const tableRow = document.createElement("tr");
+
+    const rollNumber = document.createElement("td");
+    rollNumber.innerText = students[i].rollNumber;
+    tableRow.appendChild(rollNumber);
+
+    const studentName = document.createElement("td");
+    studentName.innerText = students[i].studentName;
+    tableRow.appendChild(studentName);
+
+    const classNumber = document.createElement("td");
+    classNumber.innerText = students[i].classNumber;
+    tableRow.appendChild(classNumber);
+
+    const subject = document.createElement("td");
+    subject.innerText = students[i].subject;
+    tableRow.appendChild(subject);
+
+    const remarks = document.createElement("td");
+    remarks.innerText = students[i].remarks;
+    tableRow.appendChild(remarks);
+
+    tableBody.appendChild(tableRow);
 }
 
-listContainer.appendChild(orderedList)
+
 
