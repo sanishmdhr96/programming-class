@@ -76,66 +76,89 @@ const listContainer = document.getElementById("list-container");
 
 // listContainer.appendChild(orderedList)
 
-const students = [
-    {
-        rollNumber: "70",
-        studentName: "Sanish",
-        classNumber: "9",
-        subject: "Maths",
-        remarks: "Pass",
-    },
-    {
-        rollNumber: "80",
-        studentName: "Manish",
-        classNumber: "9",
-        subject: "Maths",
-        remarks: "Pass",
-    },
-    {
-        rollNumber: "20",
-        studentName: "Anish",
-        classNumber: "9",
-        subject: "Maths",
-        remarks: "Pass",
-    },
-    {
-        rollNumber: "30",
-        studentName: "Ram",
-        classNumber: "10",
-        subject: "Science",
-        remarks: "Pass",
-    },
-];
+const students = [];
 
+
+// function submitStudentDetails() {
+//     console.log('submit button triggered');
+// }
+
+// function submitStudentDetails1() {
+//     console.log('submit button one triggered');
+// }
 const tableBody = document.getElementById("table-body");
-console.log(tableBody);
+
+const submitButton = document.getElementById('submitBtn')
+
+const rollNumberInput = document.getElementById('rollNo')
+const fullNameInput = document.getElementById('fullname')
+
+submitButton.addEventListener("click", () => {
+    //    1. Get values from input
+    const rollNo = rollNumberInput.value
+    const fullname = fullNameInput.value
+
+    console.log('--------------------------------------')
+
+    console.log('-------- Student Array Before --------', students)
 
 
-for (let i = 0; i < students.length; i++) {
-    const tableRow = document.createElement("tr");
+    const studentObj = {
+        rollNumber: rollNo,
+        studentName: fullname,
+        classNumber: "9",
+        subject: "Maths",
+        remarks: "Pass",
+    }
 
-    const rollNumber = document.createElement("td");
-    rollNumber.innerText = students[i].rollNumber;
-    tableRow.appendChild(rollNumber);
+    console.log('-------- New Student Details --------', studentObj)
 
-    const studentName = document.createElement("td");
-    studentName.innerText = students[i].studentName;
-    tableRow.appendChild(studentName);
+    students.push(studentObj)
 
-    const classNumber = document.createElement("td");
-    classNumber.innerText = students[i].classNumber;
-    tableRow.appendChild(classNumber);
+    console.log('-------- Student Array After --------', students)
 
-    const subject = document.createElement("td");
-    subject.innerText = students[i].subject;
-    tableRow.appendChild(subject);
+    console.log('-------- Student Display Process Started --------')
 
-    const remarks = document.createElement("td");
-    remarks.innerText = students[i].remarks;
-    tableRow.appendChild(remarks);
+    console.log('-------- Clear Table Data --------')
 
-    tableBody.appendChild(tableRow);
-}
+    tableBody.innerHTML = '';
+
+    for (let i = 0; i < students.length; i++) {
+
+        const tableRow = document.createElement("tr");
+
+        const rollNumber = document.createElement("td");
+        rollNumber.innerText = students[i].rollNumber;
+        tableRow.appendChild(rollNumber);
+
+        const studentName = document.createElement("td");
+        studentName.innerText = students[i].studentName;
+        tableRow.appendChild(studentName);
+
+        const classNumber = document.createElement("td");
+        classNumber.innerText = students[i].classNumber;
+        tableRow.appendChild(classNumber);
+
+        const subject = document.createElement("td");
+        subject.innerText = students[i].subject;
+        tableRow.appendChild(subject);
+
+        const remarks = document.createElement("td");
+        remarks.innerText = students[i].remarks;
+        tableRow.appendChild(remarks);
+
+        tableBody.appendChild(tableRow);
+
+    }
+
+    console.log('-------- Student Display Process Completed --------')
+
+
+})
+
+
+
+
 
 
 
