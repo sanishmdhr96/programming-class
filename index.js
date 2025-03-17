@@ -7,7 +7,7 @@ const rollNumberInput = document.getElementById('rollNo')
 const fullNameInput = document.getElementById('fullname')
 
 
-const displayStudentDetails = () => {
+const displayStudentDetails = (data) => {
     const tableBody = document.getElementById("table-body");
 
     console.log('-------- Student Display Process Started --------')
@@ -16,28 +16,28 @@ const displayStudentDetails = () => {
 
     tableBody.innerHTML = '';
 
-    for (let i = 0; i < students.length; i++) {
+    for (let i = 0; i < data.length; i++) {
 
         const tableRow = document.createElement("tr");
 
         const rollNumber = document.createElement("td");
-        rollNumber.innerText = students[i].rollNumber;
+        rollNumber.innerText = data[i].rollNumber;
         tableRow.appendChild(rollNumber);
 
         const studentName = document.createElement("td");
-        studentName.innerText = students[i].studentName;
+        studentName.innerText = data[i].studentName;
         tableRow.appendChild(studentName);
 
         const classNumber = document.createElement("td");
-        classNumber.innerText = students[i].classNumber;
+        classNumber.innerText = data[i].classNumber;
         tableRow.appendChild(classNumber);
 
         const subject = document.createElement("td");
-        subject.innerText = students[i].subject;
+        subject.innerText = data[i].subject;
         tableRow.appendChild(subject);
 
         const remarks = document.createElement("td");
-        remarks.innerText = students[i].remarks;
+        remarks.innerText = data[i].remarks;
         tableRow.appendChild(remarks);
 
         tableBody.appendChild(tableRow);
@@ -63,7 +63,7 @@ const addDataToStudentList = (rollNo, fullname) => {
 
     console.log('-------- Student Array After --------', students)
 
-    displayStudentDetails()
+    displayStudentDetails(students)
 }
 
 
@@ -87,6 +87,21 @@ submitButton.addEventListener("click", () => {
         addDataToStudentList(rollNo, fullname)
     }
 })
+
+function searchData() {
+    //search logic
+
+    // 1. Get search input 
+    const searchInput = document.getElementById('search').value
+
+    // 2. Filter search input from the students array
+    const filteredData = students.filter((student) => student.studentName === searchInput
+    )
+
+    // 3. Display Data
+    displayStudentDetails(filteredData)
+
+}
 
 
 
