@@ -1,10 +1,25 @@
 
+const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+
+function generateString(length) {
+    let result = '';
+    const charactersLength = characters.length;
+    for (let i = 0; i < length; i++) {
+        result += characters.charAt(Math.floor(Math.random() * charactersLength));
+    }
+
+    return result;
+}
+
+
 const students = [];
 
 const submitButton = document.getElementById('submitBtn')
 
 const rollNumberInput = document.getElementById('rollNo')
 const fullNameInput = document.getElementById('fullname')
+
+
 
 
 const displayStudentDetails = (data) => {
@@ -40,6 +55,11 @@ const displayStudentDetails = (data) => {
         remarks.innerText = data[i].remarks;
         tableRow.appendChild(remarks);
 
+        const deleteBtn = document.createElement('button')
+        deleteBtn.innerText = 'Delete'
+        deleteBtn.onclick = () => deleteStudentData(data[i].id)
+        tableRow.appendChild(deleteBtn)
+
         tableBody.appendChild(tableRow);
 
     }
@@ -48,8 +68,22 @@ const displayStudentDetails = (data) => {
 
 }
 
+const deleteStudentData = (studentId) => {
+    // Find the index of selected student data
+    const studentIds = students.map(item => item.id)
+    const index = studentIds.indexOf(studentId)
+
+    // Remove the data
+    students.splice(index, 1)
+
+    // Display new data
+    displayStudentDetails(students)
+}
+
+
 const addDataToStudentList = (rollNo, fullname) => {
     const studentObj = {
+        id: generateString(8),
         rollNumber: rollNo,
         studentName: fullname,
         classNumber: "9",
