@@ -1,4 +1,3 @@
-
 const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
 
 function generateString(length) {
@@ -14,12 +13,12 @@ function generateString(length) {
 
 const students = [];
 
+let selectedStudent = null;
+
 const submitButton = document.getElementById('submitBtn')
 
 const rollNumberInput = document.getElementById('rollNo')
 const fullNameInput = document.getElementById('fullname')
-
-
 
 
 const displayStudentDetails = (data) => {
@@ -60,10 +59,16 @@ const displayStudentDetails = (data) => {
         deleteBtn.onclick = () => deleteStudentData(data[i].id)
         tableRow.appendChild(deleteBtn)
 
+        const editButton = document.createElement('button')
+        editButton.innerText = 'Edit'
+        editButton.onclick = () => editStudentData(data[i].id)
+        tableRow.appendChild(editButton)
+
         tableBody.appendChild(tableRow);
 
     }
-
+    rollNumberInput.value = null
+    fullNameInput.value = ''
     console.log('-------- Student Display Process Completed --------')
 
 }
@@ -78,6 +83,19 @@ const deleteStudentData = (studentId) => {
 
     // Display new data
     displayStudentDetails(students)
+
+
+}
+
+const editStudentData = (studentId) => {
+    // Find the index of selected student data
+    const studentData = students.find(student => student.id === studentId)
+
+    selectedStudent = studentData;
+
+    rollNumberInput.value = studentData.rollNumber
+    fullNameInput.value = studentData.studentName
+
 }
 
 
@@ -115,8 +133,18 @@ submitButton.addEventListener("click", () => {
     // const rollNumberExists = students.filter((item, idx) => parseInt(item.rollNo) === parseInt(rollNo))
     const rollNumberExists = students.find((item) => parseInt(item.rollNumber) === parseInt(rollNo))
 
-    if (rollNumberExists && rollNumberExists.rollNumber) {
-        alert("Roll number already exists, please assign another roll number")
+    if (selectedStudent?.id) {
+        const studentIds = students.map(student => student.id)
+        const studentDataIndex = studentIds.indexOf(selectedStudent?.id)
+
+        students[studentDataIndex].rollNumber = rollNo;
+        students[studentDataIndex].studentName = fullname;
+
+        displayStudentDetails(students)
+    }
+    else if (rollNumberExists && rollNumberExists.rollNumber) {
+        alert("Roll number already exists")
+
     } else {
         addDataToStudentList(rollNo, fullname)
     }
