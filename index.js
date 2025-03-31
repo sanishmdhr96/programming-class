@@ -10,7 +10,6 @@ function generateString(length) {
     return result;
 }
 
-
 const students = [];
 
 let selectedStudent = null;
@@ -19,7 +18,6 @@ const submitButton = document.getElementById('submitBtn')
 
 const rollNumberInput = document.getElementById('rollNo')
 const fullNameInput = document.getElementById('fullname')
-
 
 const displayStudentDetails = (data) => {
     const tableBody = document.getElementById("table-body");
@@ -84,7 +82,6 @@ const deleteStudentData = (studentId) => {
     // Display new data
     displayStudentDetails(students)
 
-
 }
 
 const editStudentData = (studentId) => {
@@ -97,7 +94,6 @@ const editStudentData = (studentId) => {
     fullNameInput.value = studentData.studentName
 
 }
-
 
 const addDataToStudentList = (rollNo, fullname) => {
     const studentObj = {
@@ -117,7 +113,6 @@ const addDataToStudentList = (rollNo, fullname) => {
 
     displayStudentDetails(students)
 }
-
 
 submitButton.addEventListener("click", () => {
     //    1. Get values from input
@@ -153,7 +148,7 @@ submitButton.addEventListener("click", () => {
 function searchData() {
     //search logic
 
-    // 1. Get search input 
+    // 1. Get search input
     const searchInput = document.getElementById('search').value
 
     // 2. Filter search input from the students array
@@ -165,9 +160,49 @@ function searchData() {
 
 }
 
+// const students = [
+//     { name: "Ram", age: 20 },
+//     { name: "Hari", age: 22 },
+//     {
+//         name: "Shiva",
+//         age: 18,
+//     },
+//     {
+//         name: "Christ",
+//         age: 25,
+//     },
+//     {
+//         name: "OM",
+//         age: 16,
+//     },
+//     {
+//         name: "Krishna",
+//         age: 17,
+//     },
+// ];
+
+// // current year - age -> 2025 - 18 => 2007
+
+// const filteredStudents = students.filter(student => {
+//     const yearOfBirth = 2025 - student?.age
+//     const thresholdYear = 2005;
+
+//     if (yearOfBirth > thresholdYear) {
+//         student.year = yearOfBirth
+//         return student
+//     }
+// })
 
 
 
+// console.log('filteredStudents', filteredStudents)
 
+// const products = [
+//     { name: 'Laptop', price: 1000, inStock: true },
+//     { name: 'Phone', price: 600, inStock: false },
+//     { name: 'Tablet', price: 400, inStock: true },
+// ];
 
+// const filteredData = products.filter(item => item.inStock)
+// console.log('filteredData', filteredData)
 
