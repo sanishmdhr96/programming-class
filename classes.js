@@ -104,37 +104,37 @@
 /**
  * Write a JavaScript program to create a class called 'Rectangle' with properties for width and height. Include two methods to calculate rectangle area and perimeter. Create an instance of the 'Rectangle' class and calculate its area and perimeter.
  * area = h*w
- * perimeter = 2(h+w) 
+ * perimeter = 2(h+w)
  */
 
 
-class Person {
-    constructor(name, dob) {
-        this.name = name
-        this.dob = dob
-        this.todayDate = new Date().getFullYear()
-        this.studentage = ''
-    }
+// class Person {
+//     constructor(name, dob) {
+//         this.name = name
+//         this.dob = dob
+//         this.todayDate = new Date().getFullYear()
+//         this.studentage = ''
+//     }
 
-    calculateAge() {
-        this.studentage = this.todayDate - new Date(this.dob).getFullYear()
-    }
-}
+//     calculateAge() {
+//         this.studentage = this.todayDate - new Date(this.dob).getFullYear()
+//     }
+// }
 
-class Student extends Person {
-    constructor(name, dob, classNumber, rollno) {
-        super(name, dob);
-        this.classNumber = classNumber
-        this.rollno = rollno
-    }
+// class Student extends Person {
+//     constructor(name, dob, classNumber, rollno) {
+//         super(name, dob);
+//         this.classNumber = classNumber
+//         this.rollno = rollno
+//     }
 
-    displayStudentDetails() {
-        console.log(`${this.name} - ${this.dob} - ${this.classNumber} - ${this.rollno}`)
-    }
-}
+//     displayStudentDetails() {
+//         console.log(`${this.name} - ${this.dob} - ${this.classNumber} - ${this.rollno}`)
+//     }
+// }
 
 
-const student = new Student('Ram', '03/31/1997', '5', '22').displayStudentDetails()
-student.calculateAge()
-console.log(student.studentage)
+// const student = new Student('Ram', '03/31/1997', '5', '22').displayStudentDetails()
+// student.calculateAge()
+// console.log(student.studentage)
 
